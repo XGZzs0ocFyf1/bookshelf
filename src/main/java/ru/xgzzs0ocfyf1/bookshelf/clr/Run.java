@@ -35,6 +35,10 @@ public class Run implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        log.info("All books -----------------------------");
+        bookJdbcDao.list().forEach(x->log.info("{}",x));
+
         Book book = new Book();
         book.setTitle("A Space Odyssey");
         book.setPublicationDate(LocalDate.parse("01.01.1968", DateTimeFormatter.ofPattern("dd.MM.yyyy")));

@@ -40,7 +40,7 @@ public class AuthorJdbcDao implements DAO<Author> {
     }
 
     @Override
-    public Optional<Author> get(int id) {
+    public Optional<Author> get(long id) {
         var sql = "select id, name, birth_date from authors where id = ?";
         Author author = null;
         try {
@@ -52,7 +52,7 @@ public class AuthorJdbcDao implements DAO<Author> {
     }
 
     @Override
-    public void update(Author author, int id) {
+    public void update(Author author, long id) {
         var sql = "update authors set name = ?, birth_date = ? where id = ?";
         var numberOfRowAffected = jdbcTemplate.update(sql, author.getName(), author.getBirthDate(), id);
         if (numberOfRowAffected == 1) {
@@ -61,7 +61,7 @@ public class AuthorJdbcDao implements DAO<Author> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         var numberOfRowAffected = jdbcTemplate.update("delete from books where id = ?", id);
         if (numberOfRowAffected == 1) {
             log.info("author with id = {} deleted", id);

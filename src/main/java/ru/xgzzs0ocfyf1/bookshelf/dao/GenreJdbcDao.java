@@ -40,7 +40,7 @@ public class GenreJdbcDao implements DAO<Genre> {
     }
 
     @Override
-    public Optional<Genre> get(int id) {
+    public Optional<Genre> get(long id) {
         var sql = "select id, name from genres where id = ?";
         Genre genre = null;
         try {
@@ -53,7 +53,7 @@ public class GenreJdbcDao implements DAO<Genre> {
     }
 
     @Override
-    public void update(Genre genre, int id) {
+    public void update(Genre genre, long id) {
         var sql = "update genres set name = ? where id = ?";
         var numberOfRowAffected = jdbcTemplate.update(sql, genre.getName(), id);
         if (numberOfRowAffected == 1){
@@ -62,7 +62,7 @@ public class GenreJdbcDao implements DAO<Genre> {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         var sql = "delete from genres where id = ?";
         var numberOfRowAffected  = jdbcTemplate.update(sql ,id);
         if (numberOfRowAffected == 1){

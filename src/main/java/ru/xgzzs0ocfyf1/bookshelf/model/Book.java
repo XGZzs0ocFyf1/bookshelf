@@ -11,6 +11,7 @@ public class Book {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private long authorId;
+    private long genreId;
     private String title;
     private LocalDate publicationDate;
     private String isbn10;
@@ -70,10 +71,28 @@ public class Book {
         this.isbn13 = isbn13;
     }
 
+    public long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(long authorId) {
+        this.authorId = authorId;
+    }
+
+    public long getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(long genreId) {
+        this.genreId = genreId;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
+                ", authorId=" + authorId +
+                ", genreId=" + genreId +
                 ", title='" + title + '\'' +
                 ", publicationDate=" + publicationDate +
                 ", isbn10='" + isbn10 + '\'' +
